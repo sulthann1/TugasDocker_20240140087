@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - MY Website 20210140019</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<div class="home-wrapper">
+    <div class="home-box">
+        <div class="home-header">
+            <h1>MY Website 20210140019</h1>
+            <p>Selamat datang di aplikasi!</p>
+            <a th:href="@{/form}" class="btn-add">+ Input Data Mahasiswa</a>
+        </div>
 
+        <div class="table-section">
+            <h2>Data Mahasiswa</h2>
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>NIM</th>
+                    <th>Jenis Kelamin</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${#lists.isEmpty(users)}">
+                    <td colspan="4" class="empty-text">Belum ada data</td>
+                </tr>
+                <tr th:each="user, stat : ${users}">
+                    <td th:text="${stat.index + 1}"></td>
+                    <td th:text="${user.nama}"></td>
+                    <td th:text="${user.nim}"></td>
+                    <td th:text="${user.jenisKelamin}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="home-footer">
+            <a th:href="@{/logout}" class="btn-logout">Logout</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
