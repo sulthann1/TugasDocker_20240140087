@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input - MY Website 20210140019</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<div class="form-wrapper">
+    <div class="form-box">
+        <div class="form-header">
+            <h1>Form Input Mahasiswa</h1>
+            <p class="subtitle">MY Website 20210140019</p>
+        </div>
 
+        <form th:action="@{/form}" method="post">
+            <div class="field">
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required />
+            </div>
+
+            <div class="field">
+                <label for="nim">NIM:</label>
+                <input type="text" id="nim" name="nim" placeholder="Masukkan NIM" required />
+            </div>
+
+            <div class="field">
+                <label>Jenis Kelamin:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="jenisKelamin" value="Laki-laki" required />
+                        Laki-laki
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="jenisKelamin" value="Perempuan" />
+                        Perempuan
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Submit</button>
+                <a th:href="@{/home}" class="btn-back">Kembali ke Home</a>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>
